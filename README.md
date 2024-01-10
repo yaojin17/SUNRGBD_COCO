@@ -1,3 +1,5 @@
+Note:
+This repository modifies the original [SUNRGBD_COCO](https://github.com/crmauceri/SUNRGBD_COCO) by removing 2D bbox masks and reassigning bounding boxes using SUNRGBDMeta2DBB_v2, based on category name matching and maximum IoU with the original mask's tight bbox.
 # SUNRGBD_COCO
 A small set of tools to convert SUNRGBD matlab files to coco annotation format
 

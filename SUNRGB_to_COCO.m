@@ -158,25 +158,25 @@ for set_idx= 1:3
             end
         end
         
-        for jj=1:length(SUNRGBDMeta2DBB(img_idx).groundtruth2DBB)
+        % for jj=1:length(SUNRGBDMeta2DBB(img_idx).groundtruth2DBB)
             
-            bbox_struct = SUNRGBDMeta2DBB(img_idx).groundtruth2DBB(jj);
-            bbox = round([bbox_struct.gtBb2D(1), bbox_struct.gtBb2D(2), ...
-                bbox_struct.gtBb2D(1) + bbox_struct.gtBb2D(3), bbox_struct.gtBb2D(2) + bbox_struct.gtBb2D(4)]);
-            bbox(bbox<=0) = 1;
-            if(bbox(3) > size(seg.seglabel, 2)) bbox(3) = size(seg.seglabel, 2); end
-            if(bbox(4) > size(seg.seglabel, 1)) bbox(4) = size(seg.seglabel, 1); end
+        %     bbox_struct = SUNRGBDMeta2DBB(img_idx).groundtruth2DBB(jj);
+        %     bbox = round([bbox_struct.gtBb2D(1), bbox_struct.gtBb2D(2), ...
+        %         bbox_struct.gtBb2D(1) + bbox_struct.gtBb2D(3), bbox_struct.gtBb2D(2) + bbox_struct.gtBb2D(4)]);
+        %     bbox(bbox<=0) = 1;
+        %     if(bbox(3) > size(seg.seglabel, 2)) bbox(3) = size(seg.seglabel, 2); end
+        %     if(bbox(4) > size(seg.seglabel, 1)) bbox(4) = size(seg.seglabel, 1); end
             
-            bbox_mask = zeros(size(seg.seglabel), 'logical');
-            bbox_mask(bbox(2):bbox(4), bbox(1):bbox(3)) = 1;
+        %     bbox_mask = zeros(size(seg.seglabel), 'logical');
+        %     bbox_mask(bbox(2):bbox(4), bbox(1):bbox(3)) = 1;
             
-            classname = bbox_struct.classname;
-            annotate = encode_coco_mask(bbox_mask, img_idx, sprintf('%d_%d', img_idx, jj), classname, SUNRGBDMeta2DBB);
-            if ~isempty(annotate.id)
-                annotations(annotations_idx+1) = annotate;
-                annotations_idx = annotations_idx + 1;
-            end
-        end
+        %     classname = bbox_struct.classname;
+        %     annotate = encode_coco_mask(bbox_mask, img_idx, sprintf('%d_%d', img_idx, jj), classname, SUNRGBDMeta2DBB);
+        %     if ~isempty(annotate.id)
+        %         annotations(annotations_idx+1) = annotate;
+        %         annotations_idx = annotations_idx + 1;
+        %     end
+        % end
     end
     % Remove extra rows from annotations array
     annotations(annotations_idx+1:end) = [];
